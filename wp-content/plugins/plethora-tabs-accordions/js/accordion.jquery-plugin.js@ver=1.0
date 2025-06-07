@@ -72,7 +72,7 @@
 				item.accordionAncestorItems.push(uuid);
 			});
 
-			// If this item has `initially-open prop` set to true, open it
+                        // If this item has the `initially-open` prop set to true, open it
 			if (settings.initiallyOpen) {
 				/**
 				 * We aren't opening the item here (only setting open attributes)
