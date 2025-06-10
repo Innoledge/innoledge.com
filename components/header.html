@@ -1,0 +1,64 @@
+<header class="site-header">
+  <nav class="main-navigation" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <!-- Logo -->
+      <div class="site-logo">
+        <a href="{{homeUrl}}" aria-label="{{siteName}} Homepage">
+          <img src="/assets/images/innoledge-logo.png" alt="{{siteName}}" width="222" height="96">
+        </a>
+      </div>
+
+      <!-- Main Menu -->
+      <div class="nav-menu">
+        <ul class="menu-items">
+          <li class="menu-item {{homeActive}}">
+            <a href="{{homeUrl}}">{{nav.home}}</a>
+          </li>
+          <li class="menu-item {{servicesActive}}">
+            <a href="{{servicesUrl}}">{{nav.services}}</a>
+          </li>
+          <li class="menu-item {{portfolioActive}}">
+            <a href="{{portfolioUrl}}">{{nav.portfolio}}</a>
+          </li>
+          <li class="menu-item {{aboutActive}}">
+            <a href="{{aboutUrl}}">{{nav.about}}</a>
+          </li>
+          <li class="menu-item {{contactActive}}">
+            <a href="{{contactUrl}}">{{nav.contact}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <button class="lang-toggle" aria-label="Language options" aria-expanded="false" aria-haspopup="true">
+          <span class="current-lang">{{currentLangDisplay}}</span>
+          <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+            <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="lang-dropdown" role="menu">
+          <a href="{{englishUrl}}" class="lang-option {{englishActive}}" role="menuitem" hreflang="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="20" height="15">
+            <span>English</span>
+          </a>
+          <a href="{{frenchUrl}}" class="lang-option {{frenchActive}}" role="menuitem" hreflang="fr">
+            <img src="/assets/images/flags/fr.svg" alt="" width="20" height="15">
+            <span>Français</span>
+          </a>
+          <a href="{{chineseUrl}}" class="lang-option {{chineseActive}}" role="menuitem" hreflang="zh">
+            <img src="/assets/images/flags/zh.svg" alt="" width="20" height="15">
+            <span>中文</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,75 @@
+<footer class="site-footer">
+  <div class="footer-container">
+    <!-- Company Info -->
+    <div class="footer-section company-info">
+      <div class="footer-logo">
+        <img src="/assets/images/innoledge-logo.png" alt="{{siteName}}" width="180" height="78">
+      </div>
+      <div class="company-details">
+        <h3>{{companyName}}</h3>
+        <address class="company-address">
+          {{contact.address.line1}}<br>
+          {{contact.address.line2}}<br>
+          {{contact.address.city}}
+        </address>
+      </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section contact-info">
+      <h4>Contact Information</h4>
+      <div class="contact-details">
+        <div class="contact-item">
+          <span class="contact-label">Phone:</span>
+          <a href="tel:{{contact.phone}}">{{contact.phone}}</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Fax:</span>
+          <span>{{contact.fax}}</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Email:</span>
+          <a href="mailto:{{contact.email}}">{{contact.email}}</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section quick-links">
+      <h4>Quick Links</h4>
+      <nav class="footer-nav">
+        <ul>
+          <li><a href="{{homeUrl}}">{{nav.home}}</a></li>
+          <li><a href="{{servicesUrl}}">{{nav.services}}</a></li>
+          <li><a href="{{portfolioUrl}}">{{nav.portfolio}}</a></li>
+          <li><a href="{{aboutUrl}}">{{nav.about}}</a></li>
+          <li><a href="{{contactUrl}}">{{nav.contact}}</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-section services-links">
+      <h4>{{nav.services}}</h4>
+      <nav class="services-nav">
+        <ul>
+          {{#each services}}
+          <li><a href="{{url}}">{{title}}</a></li>
+          {{/each}}
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-container">
+      <div class="copyright">
+        <p>{{footer.copyright}}</p>
+      </div>
+      <div class="powered-by">
+        <p>{{footer.poweredBy}}</p>
+      </div>
+    </div>
+  </div>
+</footer>

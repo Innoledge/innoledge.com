@@ -1,0 +1,23 @@
+<section class="services-grid" aria-label="Our Services">
+  <div class="services-container">
+    <div class="services-wrapper">
+      {{#each services}}
+      <div class="service-item">
+        <a href="{{url}}" class="service-link" aria-label="Learn more about {{title}}">
+          <div class="service-image">
+            <img src="/assets/images/services/{{id}}-edited.jpg" alt="{{title}}" loading="lazy">
+            <div class="service-overlay">
+              <div class="service-icon">
+                <img src="/assets/images/icons/{{id}}-icon.svg" alt="" width="48" height="48">
+              </div>
+            </div>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">{{title}}</h3>
+          </div>
+        </a>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>

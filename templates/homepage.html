@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="{{language}}" dir="ltr">
+<head>
+  <title>{{pageTitle}}</title>
+  {{> head}}
+</head>
+<body class="homepage">
+  {{> header}}
+
+  <main id="main-content" class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="visually-hidden">{{siteName}} - {{siteDescription}}</h1>
+          
+          <!-- Services Grid -->
+          {{> services-grid}}
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Section -->
+    <section class="company-section">
+      <div class="company-container">
+        <div class="company-content">
+          <h2 class="company-title">{{company.sectionTitle}}</h2>
+          
+          <div class="company-intro">
+            <h3 class="company-name">{{company.name}}</h3>
+            <p class="company-description">{{company.description}}</p>
+          </div>
+
+          <div class="company-details">
+            <p class="value-proposition">{{company.valueProposition}}</p>
+            
+            <p class="market-insight">{{company.marketInsight}}</p>
+            
+            <div class="offices-info">
+              <p class="offices-text">
+                <strong>{{officesLabel}}: {{company.offices}}</strong>
+              </p>
+              <p class="company-cta">{{company.cta}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {{> footer}}
+
+  <!-- Scripts -->
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/language-switcher.js"></script>
+</body>
+</html>

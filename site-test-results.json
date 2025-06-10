@@ -1,0 +1,159 @@
+{
+  "working": [
+    {
+      "path": "/",
+      "title": "Homepage – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/en/about/",
+      "title": "About Us – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/en/portfolio/",
+      "title": "Our Portfolio – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/en/contact/",
+      "title": "Contact Us – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/fr/",
+      "title": "Page d'accueil – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/fr/about/",
+      "title": "Qui Sommes-Nous – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/fr/portfolio/",
+      "title": "Portfolio – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/fr/contact/",
+      "title": "Contactez-Nous – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/zh/",
+      "title": "主页 – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/zh/about/",
+      "title": "公司简介 – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/zh/portfolio/",
+      "title": "我们的产品 – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/zh/contact/",
+      "title": "联系我们 – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/en/services/marketing/",
+      "title": "Marketing – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/en/services/sourcing/",
+      "title": "Sourcing – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/en/services/investment/",
+      "title": "Investment – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/en/services/regulatory-affairs/",
+      "title": "Regulatory Affairs – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/en/services/business-consultancy/",
+      "title": "Business Consultancy – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/en/services/distribution/",
+      "title": "Distribution – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/fr/services/france-marketing/",
+      "title": "Marketing – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/fr/services/sourcing-2/",
+      "title": "Sourcing – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/fr/services/investissement/",
+      "title": "Investissement – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/fr/services/affaires-reglementaires/",
+      "title": "Affaires Réglementaires – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/fr/services/business-consultant/",
+      "title": "Conseil en Affaires – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/fr/services/distribution-2/",
+      "title": "Distribution – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/zh/services/marketing/",
+      "title": "市场营销 – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/zh/services/sourcing/",
+      "title": "采购 – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/zh/services/investment/",
+      "title": "投资 – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/zh/services/regulatory-affairs/",
+      "title": "注册事务 – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/zh/services/business-consultancy/",
+      "title": "商务咨询 – Innoledge",
+      "status": "OK"
+    },
+    {
+      "path": "/zh/services/distribution/",
+      "title": "分布 – Innoledge",
+      "status": "OK"
+    }
+  ],
+  "missing": [],
+  "errors": [],
+  "linkIssues": [],
+  "languageSwitchingIssues": [],
+  "formIssues": []
+}

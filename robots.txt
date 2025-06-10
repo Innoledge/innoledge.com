@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and private directories
+Disallow: /scripts/
+Disallow: /data/
+Disallow: /templates/
+Disallow: /components/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Allow important pages
+Allow: /
+Allow: /en/
+Allow: /fr/
+Allow: /zh/
+
+# Sitemap
+Sitemap: https://innoledge.com/sitemap.xml

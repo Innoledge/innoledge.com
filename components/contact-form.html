@@ -1,0 +1,118 @@
+<section class="contact-form-section">
+  <div class="form-container">
+    <form class="contact-form" action="{{formAction}}" method="POST" novalidate>
+      <!-- Hidden field for Formspree -->
+      <input type="hidden" name="_subject" value="New contact from {{siteName}} ({{language}})">
+      <input type="hidden" name="_language" value="{{language}}">
+      <input type="hidden" name="_next" value="{{thankYouUrl}}">
+      
+      <!-- Name Field -->
+      <div class="form-group">
+        <label for="contact-name" class="form-label">{{form.nameLabel}} <span class="required">*</span></label>
+        <input 
+          type="text" 
+          id="contact-name" 
+          name="name" 
+          class="form-input" 
+          required 
+          aria-required="true"
+          autocomplete="name"
+        >
+        <span class="error-message" role="alert"></span>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="contact-email" class="form-label">{{form.emailLabel}} <span class="required">*</span></label>
+        <input 
+          type="email" 
+          id="contact-email" 
+          name="email" 
+          class="form-input" 
+          required 
+          aria-required="true"
+          autocomplete="email"
+        >
+        <span class="error-message" role="alert"></span>
+      </div>
+
+      <!-- Phone Field -->
+      <div class="form-group">
+        <label for="contact-phone" class="form-label">{{form.phoneLabel}}</label>
+        <input 
+          type="tel" 
+          id="contact-phone" 
+          name="phone" 
+          class="form-input"
+          autocomplete="tel"
+        >
+        <span class="error-message" role="alert"></span>
+      </div>
+
+      <!-- Company Field -->
+      <div class="form-group">
+        <label for="contact-company" class="form-label">{{form.companyLabel}}</label>
+        <input 
+          type="text" 
+          id="contact-company" 
+          name="company" 
+          class="form-input"
+          autocomplete="organization"
+        >
+        <span class="error-message" role="alert"></span>
+      </div>
+
+      <!-- Subject Field -->
+      <div class="form-group">
+        <label for="contact-subject" class="form-label">{{form.subjectLabel}}</label>
+        <input 
+          type="text" 
+          id="contact-subject" 
+          name="subject" 
+          class="form-input"
+        >
+        <span class="error-message" role="alert"></span>
+      </div>
+
+      <!-- Message Field -->
+      <div class="form-group">
+        <label for="contact-message" class="form-label">{{form.messageLabel}} <span class="required">*</span></label>
+        <textarea 
+          id="contact-message" 
+          name="message" 
+          class="form-textarea" 
+          rows="6" 
+          required 
+          aria-required="true"
+        ></textarea>
+        <span class="error-message" role="alert"></span>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group form-actions">
+        <button type="submit" class="form-submit">
+          <span class="button-text">{{form.submitText}}</span>
+          <span class="button-loading" style="display: none;">
+            <svg class="loading-spinner" width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="32" stroke-dashoffset="32">
+                <animate attributeName="stroke-dasharray" dur="2s" values="0 32;16 16;0 32;0 32" repeatCount="indefinite"/>
+                <animate attributeName="stroke-dashoffset" dur="2s" values="0;-16;-32;-32" repeatCount="indefinite"/>
+              </circle>
+            </svg>
+            {{form.sendingText}}
+          </span>
+        </button>
+      </div>
+
+      <!-- Success/Error Messages -->
+      <div class="form-messages">
+        <div class="success-message" style="display: none;" role="status" aria-live="polite">
+          {{form.successMessage}}
+        </div>
+        <div class="error-message-general" style="display: none;" role="alert" aria-live="assertive">
+          {{form.errorMessage}}
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

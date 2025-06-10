@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="{{language}}" dir="ltr">
+<head>
+  <title>{{pageTitle}}</title>
+  {{> head}}
+</head>
+<body class="contact-page">
+  {{> header}}
+
+  <main id="main-content" class="main-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-container">
+        <h1 class="page-title">{{nav.contact}}</h1>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a href="{{homeUrl}}">{{nav.home}}</a>
+            </li>
+            <li class="breadcrumb-item current" aria-current="page">
+              {{nav.contact}}
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-content">
+      <div class="contact-container">
+        <div class="contact-grid">
+          <!-- Contact Information -->
+          <div class="contact-info">
+            <h2>{{contactInfoTitle}}</h2>
+            
+            <div class="contact-details">
+              <div class="contact-item">
+                <h3>{{addressLabel}}</h3>
+                <address class="contact-address">
+                  {{contact.address.line1}}<br>
+                  {{contact.address.line2}}<br>
+                  {{contact.address.city}}
+                </address>
+              </div>
+              
+              <div class="contact-item">
+                <h3>{{phoneLabel}}</h3>
+                <p><a href="tel:{{contact.phone}}">{{contact.phone}}</a></p>
+              </div>
+              
+              <div class="contact-item">
+                <h3>{{faxLabel}}</h3>
+                <p>{{contact.fax}}</p>
+              </div>
+              
+              <div class="contact-item">
+                <h3>{{emailLabel}}</h3>
+                <p><a href="mailto:{{contact.email}}">{{contact.email}}</a></p>
+              </div>
+            </div>
+            
+            <!-- Office Locations -->
+            <div class="office-locations">
+              <h3>{{officeLocationsTitle}}</h3>
+              <p>{{company.offices}}</p>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-wrapper">
+            <h2>{{contactFormTitle}}</h2>
+            {{> contact-form}}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {{> footer}}
+
+  <!-- Scripts -->
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/language-switcher.js"></script>
+  <script src="/assets/js/contact-form.js"></script>
+</body>
+</html>

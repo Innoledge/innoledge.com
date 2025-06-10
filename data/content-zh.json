@@ -1,0 +1,76 @@
+{
+  "site": {
+    "title": "Innoledge",
+    "description": "市场营销 采购 投资 注册事务 商务咨询 分布",
+    "language": "zh",
+    "locale": "zh-HK"
+  },
+  "navigation": {
+    "home": "主页",
+    "services": "服务",
+    "portfolio": "我们的产品",
+    "about": "公司简介", 
+    "contact": "联系我们"
+  },
+  "homepage": {
+    "title": "主页 – Innoledge",
+    "metaDescription": "市场营销 采购 投资 注册事务 商务咨询 分布 公司介绍 乐奇国际有限公司是一个具有30多年的经验丰富、通晓多国文化背景、协助外国公司在亚洲地区进行贸易和投资服务的专业公司，尤其专注保健产品，化妆品及农产品方面的业务。",
+    "services": [
+      {
+        "id": "marketing",
+        "title": "市场营销",
+        "url": "/zh/services/marketing/"
+      },
+      {
+        "id": "sourcing",
+        "title": "采购",
+        "url": "/zh/services/sourcing/"
+      },
+      {
+        "id": "investment", 
+        "title": "投资",
+        "url": "/zh/services/investment/"
+      },
+      {
+        "id": "regulatory-affairs",
+        "title": "注册事务",
+        "url": "/zh/services/regulatory-affairs/"
+      },
+      {
+        "id": "business-consultancy",
+        "title": "商务咨询",
+        "url": "/zh/services/business-consultancy/"
+      },
+      {
+        "id": "distribution",
+        "title": "分布",
+        "url": "/zh/services/distribution/"
+      }
+    ],
+    "company": {
+      "sectionTitle": "公司介绍",
+      "name": "乐奇国际有限公司",
+      "description": "是一个具有30多年的经验丰富、通晓多国文化背景、协助外国公司在亚洲地区进行贸易和投资服务的专业公司，尤其专注保健产品，化妆品及农产品方面的业务。",
+      "valueProposition": "加入乐奇国际有限公司的网络，您可以对市场进行可靠、迅速、准确的调查和分析。乐奇国际公司帮助客户和舆论领导者建立项目沟通计划，利用公司团队多元化、多学科的优势来游说影响各个层次的决策者",
+      "marketInsight": "由于亚洲，尤其是中国市场的迅速发展使得这里逐渐成为世界最大的经济中心，每个致力于业务发展的企业都把亚洲作为优先考虑的区域。",
+      "offices": "香港、北京、上海和东京",
+      "cta": "乐奇国际有限公司在香港、北京、上海和东京都设有办事处，是您在亚洲发展的最佳合作伙伴。"
+    }
+  },
+  "contact": {
+    "title": "联系我们 – Innoledge", 
+    "formAction": "https://formspree.io/f/myzedzbl",
+    "address": {
+      "line1": "Room 1708, One Midtown",
+      "line2": "11 Hoi Shing Road, Tsuen Wan",
+      "city": "Hong Kong"
+    },
+    "phone": "+852 2803 7784",
+    "fax": "+852 3568 4410",
+    "email": "info@innoledge.com"
+  },
+  "footer": {
+    "copyright": "Copyright © 2024 Innoledge",
+    "poweredBy": "Powered by TR Digital Services"
+  }
+}

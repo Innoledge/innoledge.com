@@ -1,0 +1,76 @@
+{
+  "site": {
+    "title": "Innoledge",
+    "description": "Marketing Sourcing Investissement Affaires Réglementaires Business Consultant Distribution",
+    "language": "fr",
+    "locale": "fr-FR"
+  },
+  "navigation": {
+    "home": "Page d'accueil",
+    "services": "Services",
+    "portfolio": "Portfolio", 
+    "about": "Qui Sommes-Nous",
+    "contact": "Contactez-Nous"
+  },
+  "homepage": {
+    "title": "Page d'accueil – Innoledge",
+    "metaDescription": "Marketing Sourcing Investissement Affaires Réglementaires Business Consultant Distribution Notre Société INNOLEDGE INTERNATIONAL LTD. est un réseau multiculturel de professionnels avec plus de 30 ans d'expérience dans le commerce et les investissements en Asie, avec une expertise particulière dans les industries de la santé, des cosmétiques et de l' agro-alimentaire.",
+    "services": [
+      {
+        "id": "marketing",
+        "title": "Marketing",
+        "url": "/fr/services/france-marketing/"
+      },
+      {
+        "id": "sourcing",
+        "title": "Sourcing", 
+        "url": "/fr/services/sourcing-2/"
+      },
+      {
+        "id": "investment",
+        "title": "Investissement",
+        "url": "/fr/services/investissement/"
+      },
+      {
+        "id": "regulatory-affairs",
+        "title": "Affaires Réglementaires",
+        "url": "/fr/services/affaires-reglementaires/"
+      },
+      {
+        "id": "business-consultancy",
+        "title": "Business Consultant",
+        "url": "/fr/services/business-consultant/"
+      },
+      {
+        "id": "distribution",
+        "title": "Distribution",
+        "url": "/fr/services/distribution-2/"
+      }
+    ],
+    "company": {
+      "sectionTitle": "Notre Société",
+      "name": "INNOLEDGE INTERNATIONAL LTD.",
+      "description": "est un réseau multiculturel de professionnels avec plus de 30 ans d'expérience dans le commerce et les investissements en Asie, avec une expertise particulière dans les industries de la santé, des cosmétiques et de l' agro-alimentaire.",
+      "valueProposition": "Rejoignez le réseau INNOLEDGE INTERNATIONAL et vous êtes assuré d'un accès instantané à des études de marché et de faisabilité. Mise en œuvre de plans de communications avec les clients et les leaders d'opinion, lobbying auprès des décideurs à différents niveaux font partie des avantages de l'équipe multiculturelle et multidisciplinaire d'INNOLEDGE INTERNATIONAL.",
+      "marketInsight": "En raison du développement rapide des marchés asiatiques et en particulier de la Chine, la région devient la plus grande économie du monde. Pour chaque société le développement des affaires avec l'Asie est une priorité absolue.",
+      "offices": "Hong Kong, Beijing, Shanghai et Tokyo",
+      "cta": "INNOLEDGE INTERNATIONAL est le partenaire idéal pour votre développement avec l'Asie."
+    }
+  },
+  "contact": {
+    "title": "Contactez-Nous – Innoledge",
+    "formAction": "https://formspree.io/f/myzedzbl",
+    "address": {
+      "line1": "Room 1708, One Midtown",
+      "line2": "11 Hoi Shing Road, Tsuen Wan",
+      "city": "Hong Kong"
+    },
+    "phone": "+852 2803 7784",
+    "fax": "+852 3568 4410",
+    "email": "info@innoledge.com"
+  },
+  "footer": {
+    "copyright": "Copyright © 2024 Innoledge",
+    "poweredBy": "Powered by TR Digital Services"
+  }
+}
