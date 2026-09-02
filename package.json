@@ -1,0 +1,9 @@
+{
+  "name": "innoledge-com",
+  "private": true,
+  "description": "innoledge.com static website with a serverless contact endpoint (api/contact.js)",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
+}
