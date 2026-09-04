@@ -47,8 +47,12 @@ a{transition:color .15s ease}
 .inno-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.4rem}
 
 /* Hero --------------------------------------------------------------------- */
-/* Light, full-bleed band under the header: the cream background is extended
-   with a box-shadow and clipped horizontally so no horizontal scroll appears. */
+/* Light, full-bleed band under the header. The cream background is extended
+   sideways with a large box-shadow spread; clip-path trims it vertically and
+   `.site-content` (a full-viewport-width ancestor) trims it horizontally, so the
+   band reaches both screen edges without ever adding a horizontal scrollbar.
+   `overflow-x:hidden` is only a fallback for browsers without `clip`. */
+.site-content{overflow-x:hidden;overflow-x:clip}
 .inno-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:center;padding:clamp(2.6rem,6vw,4.8rem) 0 clamp(2.6rem,6vw,4.4rem);margin-bottom:2.8rem;color:var(--inno-ink);background:var(--inno-hero-bg);box-shadow:0 0 0 100vmax var(--inno-hero-bg);clip-path:inset(0 -100vmax)}
 .inno-hero::before{content:"";position:absolute;right:-6%;top:-38%;width:560px;height:560px;border-radius:50%;border:1.5px solid rgba(213,104,45,.16);pointer-events:none}
 .inno-hero::after{content:"";position:absolute;right:14%;bottom:-44%;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle at center,rgba(213,104,45,.12),rgba(213,104,45,0) 70%);pointer-events:none}
@@ -84,8 +88,12 @@ body.home .ast-header-breadcrumb,body[data-inno="inno-home"] .ast-header-breadcr
 
 /* Company ------------------------------------------------------------------ */
 .inno-company{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:2.2rem;align-items:center}
-.inno-company figure{margin:0;border-radius:var(--inno-radius);overflow:hidden;box-shadow:var(--inno-shadow)}
+/* The inherited family photo is only 280px wide, so the frame hugs the image at
+   its natural size instead of upscaling it. Once the `company-team` slot is
+   built (see PHOTOGRAPHY.md) drop the max-width and it fills the column. */
+.inno-company figure{margin:0;border-radius:var(--inno-radius);overflow:hidden;box-shadow:var(--inno-shadow);max-width:280px;justify-self:center}
 .inno-company figure img{width:100%;height:auto;display:block}
+.inno-company figure.has-photo{max-width:none}
 .inno-offices{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:1.2rem 0 0;padding:0}
 .inno-offices li{padding:.4rem .9rem;border-radius:999px;background:var(--inno-orange-soft);color:var(--inno-orange-dark);font-weight:600;font-size:.9rem}
 
