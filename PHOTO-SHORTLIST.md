@@ -46,6 +46,12 @@ page most.
 The one that carries the page. It sits as a tall panel to the right of the
 headline, roughly 415 × 550 on a laptop.
 
+> **This slot is now filled**, from a 2553 × 2560 original recovered from the
+> repo's own history (advisers at a meeting table — see `PHOTOGRAPHY.md`). So this
+> is an upgrade rather than a gap: a real Hong Kong photograph would say something
+> the current one doesn't, which is *where* Innoledge works. Worth doing, but no
+> longer urgent.
+
 - Unsplash: [hong kong skyline](https://unsplash.com/s/photos/hong-kong-skyline?orientation=portrait) ·
   [victoria harbour](https://unsplash.com/s/photos/victoria-harbour?orientation=portrait) ·
   [hong kong night](https://unsplash.com/s/photos/hong-kong-night?orientation=portrait)
