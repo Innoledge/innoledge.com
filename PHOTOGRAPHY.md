@@ -17,9 +17,9 @@ layout — the largest is 768 px and most are 250–432 px:
 | `2022/09/innoledge-family.jpg` | 280 × 184 | company block |
 | `2022/08/cosmetics.jpg` | 250 × 166 | Cosmetics sector card |
 
-A hero image needs ~1800 px. Anything smaller is upscaled by the browser and
-looks soft, which is why the hero currently uses a typographic treatment rather
-than a photograph.
+The hero needs ~1400 px on its short edge. Anything smaller is upscaled by the
+browser and looks soft, which is why the hero currently uses a typographic
+treatment rather than a photograph.
 
 ## Slots the design expects
 
@@ -30,7 +30,7 @@ them up.
 
 | Slot | Aspect | Widths emitted | Subject |
 | --- | --- | --- | --- |
-| `hero-asia` | 4:3 | 1800 / 1200 / 800 | Homepage hero. Victoria Harbour or a modern Asian business district, ideally at dusk. Needs calm space on one side so the headline can breathe. |
+| `hero-asia` | **3:4 portrait** | 1400 / 1000 / 700 | Homepage hero. Victoria Harbour or the Central skyline at dusk. Shown as a tall panel beside the headline, so a vertical composition keeps the most frame. |
 | `company-team` | 3:2 | 1400 / 900 / 600 | Company block. The Innoledge team or the Hong Kong office district. Replaces `innoledge-family.jpg`. |
 | `sector-health` | 3:2 | 1200 / 800 / 500 | Health sector card. Pharmacy, laboratory or hospital setting. |
 | `sector-cosmetics` | 3:2 | 1200 / 800 / 500 | Cosmetics sector card. Premium skincare, clean flat-lay or product-in-use. |
@@ -57,19 +57,33 @@ width into `wp-content/uploads/2026/09/photography/`. It reports the weight of
 every file and flags anything over the 250 KB budget. `--dry-run` reports
 without writing.
 
+Building a slot also **activates** it, where the markup exists. A page carries
+the slot's `<picture>` inside a `<!--PHOTO:slot ... PHOTO-->` comment so the site
+never points at a file that does not exist; the build uncomments it and, for
+`hero-asia`, repoints `og:image` / `twitter:image` from the logo to the hero
+photo. `--deactivate <slot>` reverses all of it.
+
+**Only `hero-asia` carries that markup today.** The other four slots build their
+derivatives correctly but nothing references them yet, and the script says so
+rather than failing quietly. Wiring them is a small markup change per slot, best
+made once the chosen photographs exist so the card crops can be judged against
+them.
+
 Derivatives are cached for a year by `vercel.json`, so always change the photo by
 rebuilding the slot rather than by editing a path.
 
-## Two good sources of photography
+## Which photo to get
+
+**`PHOTO-SHORTLIST.md` has the searches and the selection criteria, slot by
+slot** — start there. In short, two good sources:
 
 1. **Innoledge's own photographs** — preferred. Real photos of the team, the
    Hong Kong / Beijing / Shanghai / Tokyo offices, and the products Innoledge
    distributes are more credible than stock, and carry no licence questions.
    Anything from a recent phone is comfortably large enough.
 2. **Free-licence stock** — Unsplash or Pexels both allow commercial use without
-   attribution. Search terms that suit the brief: *Victoria Harbour dusk*,
-   *Hong Kong skyline*, *Central Hong Kong business district*, *pharmacy
-   laboratory*, *skincare flat lay*, *fresh produce market*.
+   attribution. `PHOTO-SHORTLIST.md` carries orientation-filtered searches for
+   each slot along with what to choose and what to avoid.
 
 ## Record this before go-live
 

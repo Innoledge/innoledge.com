@@ -73,6 +73,35 @@ html[lang^="zh"] .inno-hero h1{line-height:1.28;letter-spacing:0;font-size:clamp
 .inno-hero-facts small{display:block;color:var(--inno-muted);font-size:.86rem;line-height:1.4;margin-top:.15rem}
 body.home .ast-header-breadcrumb,body[data-inno="inno-home"] .ast-header-breadcrumb{display:none}
 
+/* Hero photograph. The figure is a plain sibling of the copy and the stats
+   panel, so activating a photo never restructures the markup: `:has()` spots the
+   figure and re-composes the band around it. Without a figure the band keeps its
+   typographic two-column layout and the stats stay a white card.
+
+   With a photo, the picture has to be the thing that carries the band, so it
+   takes the full height of the right-hand column and the stats step back into a
+   low strip beneath the copy rather than a card competing with the image. */
+.inno-hero-media{margin:0;border-radius:var(--inno-radius);overflow:hidden;background:var(--inno-orange-soft);box-shadow:0 26px 70px rgba(120,60,25,.20),0 3px 10px rgba(120,60,25,.07)}
+.inno-hero-media img{display:block;width:100%;height:auto;margin:0}
+@media (min-width:821px){
+  .inno-hero:has(.inno-hero-media){grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);grid-template-rows:auto auto;align-items:start;column-gap:clamp(2rem,4vw,3.4rem);row-gap:0}
+  .inno-hero:has(.inno-hero-media) .inno-hero-copy{grid-column:1;grid-row:1}
+    /* Held at the slot's own 3:4 ratio so the derivative is shown uncropped. */
+  .inno-hero:has(.inno-hero-media) .inno-hero-media{grid-column:2;grid-row:1/span 2;align-self:center;aspect-ratio:3/4}
+  .inno-hero:has(.inno-hero-media) .inno-hero-media img{height:100%;object-fit:cover}
+  /* Stats become a rule-topped strip under the copy. */
+  .inno-hero:has(.inno-hero-media) .inno-hero-panel{grid-column:1;grid-row:2;background:none;box-shadow:none;border-top:1px solid rgba(213,104,45,.3);border-radius:0;padding:1.15rem 0 0;margin:1.9rem 0 0;max-width:none;width:100%}
+  .inno-hero:has(.inno-hero-media) .inno-hero-panel-title{display:none}
+  .inno-hero:has(.inno-hero-media) .inno-hero-facts{display:flex;gap:1.7rem}
+  .inno-hero:has(.inno-hero-media) .inno-hero-facts li{display:block;flex:1;border-top:0;padding:0}
+  .inno-hero:has(.inno-hero-media) .inno-hero-facts strong{display:block;font-size:1.75rem;margin-bottom:.1rem;min-width:0}
+  .inno-hero:has(.inno-hero-media) .inno-hero-facts span{font-size:.92rem}
+  .inno-hero:has(.inno-hero-media) .inno-hero-facts small{font-size:.79rem;margin-top:.1rem}
+  /* The radial glow sat where the photo now is. */
+  .inno-hero:has(.inno-hero-media)::after{display:none}
+}
+@media print{.inno-hero-media{box-shadow:none}}
+
 /* Service cards ----------------------------------------------------------- */
 .inno-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin:0;padding:0;list-style:none}
 .inno-card{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--inno-line);border-radius:var(--inno-radius);overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
@@ -93,7 +122,7 @@ body.home .ast-header-breadcrumb,body[data-inno="inno-home"] .ast-header-breadcr
    built (see PHOTOGRAPHY.md) drop the max-width and it fills the column. */
 .inno-company figure{margin:0;border-radius:var(--inno-radius);overflow:hidden;box-shadow:var(--inno-shadow);max-width:280px;justify-self:center}
 .inno-company figure img{width:100%;height:auto;display:block}
-.inno-company figure.has-photo{max-width:none}
+.inno-company figure:has(picture){max-width:none}
 .inno-offices{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:1.2rem 0 0;padding:0}
 .inno-offices li{padding:.4rem .9rem;border-radius:999px;background:var(--inno-orange-soft);color:var(--inno-orange-dark);font-weight:600;font-size:.9rem}
 
