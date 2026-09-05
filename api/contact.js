@@ -103,6 +103,26 @@ function backLink(req) {
   }
 }
 
+// Replies are written with the core Node response API only — res.statusCode,
+// res.setHeader and res.end. Vercel's Express-style res.status()/.json()/.send()
+// helpers exist only when @vercel/node wraps the request, so depending on them
+// makes the handler untestable outside Vercel and leaves the response's
+// Content-Type up to the wrapper's type inference. Setting it explicitly is one
+// less thing to be wrong.
+function reply(res, status, contentType, body) {
+  res.statusCode = status;
+  res.setHeader('Content-Type', contentType);
+  res.end(body);
+}
+
+function replyJson(res, status, payload) {
+  reply(res, status, 'application/json; charset=utf-8', JSON.stringify(payload));
+}
+
+function replyHtml(res, status, html) {
+  reply(res, status, 'text/html; charset=utf-8', html);
+}
+
 // The form works without JavaScript, so replies come in two shapes: JSON for the
 // enhanced submit, a small HTML page for a plain POST.
 function wantsJson(req) {
@@ -161,25 +181,25 @@ module.exports = async (req, res) => {
 
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
-    return res.status(405).json({ ok: false, error: 'Method not allowed' });
+    return replyJson(res, 405, { ok: false, error: 'Method not allowed' });
   }
   if (!originAllowed(req)) {
-    return res.status(403).json({ ok: false, error: 'Forbidden' });
+    return replyJson(res, 403, { ok: false, error: 'Forbidden' });
   }
 
   let body;
   try {
     body = await readBody(req);
   } catch {
-    return res.status(400).json({ ok: false, error: 'Could not read the submitted form.' });
+    return replyJson(res, 400, { ok: false, error: 'Could not read the submitted form.' });
   }
 
   // Honeypot: a real person never fills a hidden field. Answer as if it worked so
   // a bot gets no signal about why nothing happened.
   if (clean(body.website, 200)) {
     return wantsJson(req)
-      ? res.status(200).json({ ok: true })
-      : res.status(200).send(page({
+      ? replyJson(res, 200, { ok: true })
+      : replyHtml(res, 200, page({
           title: 'Thank you', heading: 'Thank you',
           body: 'Your message has been sent.', back,
         }));
@@ -199,8 +219,8 @@ module.exports = async (req, res) => {
   if (problems.length) {
     const msg = `Please provide ${problems.join(', ')}.`;
     return wantsJson(req)
-      ? res.status(400).json({ ok: false, error: msg })
-      : res.status(400).send(page({ title: 'Check the form', heading: 'Something is missing', body: escapeHtml(msg), back }));
+      ? replyJson(res, 400, { ok: false, error: msg })
+      : replyHtml(res, 400, page({ title: 'Check the form', heading: 'Something is missing', body: escapeHtml(msg), back }));
   }
 
   const to = process.env.MAIL_TO || DEFAULT_TO;
@@ -242,13 +262,13 @@ ${rows.map(([label, value]) => `<tr><td style="padding:4px 12px 4px 0;color:#5f6
     console.error('contact form send failed:', err && err.message);
     const msg = 'Sorry, your message could not be sent. Please e-mail info@innoledge.com or call +852 2803 7784.';
     return wantsJson(req)
-      ? res.status(502).json({ ok: false, error: msg })
-      : res.status(502).send(page({ title: 'Not sent', heading: 'Your message was not sent', body: escapeHtml(msg), back }));
+      ? replyJson(res, 502, { ok: false, error: msg })
+      : replyHtml(res, 502, page({ title: 'Not sent', heading: 'Your message was not sent', body: escapeHtml(msg), back }));
   }
 
   return wantsJson(req)
-    ? res.status(200).json({ ok: true })
-    : res.status(200).send(page({
+    ? replyJson(res, 200, { ok: true })
+    : replyHtml(res, 200, page({
         title: 'Thank you',
         heading: 'Thank you',
         body: 'Your message has been sent to Innoledge. We will be in touch shortly.',
