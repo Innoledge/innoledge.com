@@ -6,6 +6,7 @@
   --inno-orange:#d5682d;
   --inno-orange-dark:#b4521d;
   --inno-orange-soft:#fdf3ec;
+  --inno-hero-bg:#fbf4ee;
   --inno-ink:#2b2f36;
   --inno-muted:#5f6672;
   --inno-line:#e6e8ec;
@@ -35,7 +36,7 @@ a{transition:color .15s ease}
 .inno-title.is-center::after{margin-left:auto;margin-right:auto}
 .inno-lead{font-size:1.08rem;color:var(--inno-muted);max-width:62ch;margin:0 0 1.6rem}
 .inno-lead.is-center{margin-left:auto;margin-right:auto;text-align:center}
-.inno-btn{display:inline-block;padding:.8rem 1.35rem;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--inno-orange);background:var(--inno-orange);color:#fff!important;line-height:1.2;transition:all .18s ease}
+.inno-btn,.entry-content .inno-btn{display:inline-block;padding:.8rem 1.35rem;border-radius:999px;font-weight:600;text-decoration:none!important;border:2px solid var(--inno-orange);background:var(--inno-orange);color:#fff!important;line-height:1.2;transition:all .18s ease}
 .inno-btn:hover{background:var(--inno-orange-dark);border-color:var(--inno-orange-dark);transform:translateY(-1px)}
 .inno-btn.is-ghost{background:transparent;color:var(--inno-orange)!important}
 .inno-btn.is-ghost:hover{background:var(--inno-orange-soft)}
@@ -46,15 +47,60 @@ a{transition:color .15s ease}
 .inno-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.4rem}
 
 /* Hero --------------------------------------------------------------------- */
-.inno-hero{position:relative;overflow:hidden;border-radius:var(--inno-radius);background:linear-gradient(135deg,#c95d24 0%,var(--inno-orange) 45%,#e8905f 100%);color:#fff;padding:clamp(2.2rem,5vw,4.2rem) clamp(1.4rem,4vw,3.4rem);margin-bottom:2.6rem;box-shadow:var(--inno-shadow)}
-.inno-hero::before{content:"";position:absolute;inset:auto -12% -55% auto;width:520px;height:520px;border-radius:50%;background:rgba(255,255,255,.10)}
-.inno-hero::after{content:"";position:absolute;top:-40%;left:-8%;width:380px;height:380px;border-radius:50%;background:rgba(255,255,255,.07)}
+/* Light, full-bleed band under the header. The cream background is extended
+   sideways with a large box-shadow spread; clip-path trims it vertically and
+   `.site-content` (a full-viewport-width ancestor) trims it horizontally, so the
+   band reaches both screen edges without ever adding a horizontal scrollbar.
+   `overflow-x:hidden` is only a fallback for browsers without `clip`. */
+.site-content{overflow-x:hidden;overflow-x:clip}
+.inno-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:center;padding:clamp(2.6rem,6vw,4.8rem) 0 clamp(2.6rem,6vw,4.4rem);margin-bottom:2.8rem;color:var(--inno-ink);background:var(--inno-hero-bg);box-shadow:0 0 0 100vmax var(--inno-hero-bg);clip-path:inset(0 -100vmax)}
+.inno-hero::before{content:"";position:absolute;right:-6%;top:-38%;width:560px;height:560px;border-radius:50%;border:1.5px solid rgba(213,104,45,.16);pointer-events:none}
+.inno-hero::after{content:"";position:absolute;right:14%;bottom:-44%;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle at center,rgba(213,104,45,.12),rgba(213,104,45,0) 70%);pointer-events:none}
 .inno-hero > *{position:relative;z-index:1}
-.inno-hero .inno-eyebrow{color:rgba(255,255,255,.85)}
-.inno-hero h1{color:#fff;font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.15;margin:0 0 1rem;max-width:22ch;font-weight:700;letter-spacing:-.015em}
-.inno-hero p{color:rgba(255,255,255,.92);font-size:1.1rem;max-width:60ch;margin:0}
-.inno-hero-facts{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;margin-top:1.8rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.3);font-size:.95rem}
-.inno-hero-facts strong{display:block;font-size:1.25rem}
+.inno-hero h1{color:var(--inno-ink);font-size:clamp(2rem,3.9vw,3.15rem);line-height:1.1;margin:0 0 1.1rem;max-width:24ch;font-weight:800;letter-spacing:-.02em}
+html[lang^="zh"] .inno-hero h1{line-height:1.28;letter-spacing:0;font-size:clamp(1.9rem,3.4vw,2.8rem)}
+.inno-hero h1 em{font-style:normal;color:var(--inno-orange)}
+.inno-hero p{color:var(--inno-muted);font-size:1.12rem;max-width:56ch;margin:0}
+.inno-hero .inno-actions{margin-top:1.7rem}
+.inno-hero-panel{background:#fff;border-radius:var(--inno-radius);box-shadow:0 22px 60px rgba(150,75,30,.13),0 2px 6px rgba(150,75,30,.06);padding:1.5rem 1.7rem 1.35rem;border-top:4px solid var(--inno-orange);max-width:420px;margin-left:auto;width:100%}
+.inno-hero-panel-title{font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.74rem;color:var(--inno-orange);margin:0 0 .3rem}
+.inno-hero-facts{list-style:none;margin:0;padding:0}
+.inno-hero-facts li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:1.05rem;align-items:center;padding:1rem 0;border-top:1px solid var(--inno-line)}
+.inno-hero-facts li:first-child{border-top:0}
+.inno-hero-facts li:last-child{padding-bottom:.35rem}
+.inno-hero-facts strong{font-size:2.35rem;line-height:1;color:var(--inno-orange);font-weight:800;letter-spacing:-.03em;min-width:3.1ch;font-variant-numeric:tabular-nums}
+.inno-hero-facts span{display:block;font-weight:700;color:var(--inno-ink);line-height:1.25}
+.inno-hero-facts small{display:block;color:var(--inno-muted);font-size:.86rem;line-height:1.4;margin-top:.15rem}
+body.home .ast-header-breadcrumb,body[data-inno="inno-home"] .ast-header-breadcrumb{display:none}
+
+/* Hero photograph. The figure is a plain sibling of the copy and the stats
+   panel, so activating a photo never restructures the markup: `:has()` spots the
+   figure and re-composes the band around it. Without a figure the band keeps its
+   typographic two-column layout and the stats stay a white card.
+
+   With a photo, the picture has to be the thing that carries the band, so it
+   takes the full height of the right-hand column and the stats step back into a
+   low strip beneath the copy rather than a card competing with the image. */
+.inno-hero-media{margin:0;border-radius:var(--inno-radius);overflow:hidden;background:var(--inno-orange-soft);box-shadow:0 26px 70px rgba(120,60,25,.20),0 3px 10px rgba(120,60,25,.07)}
+.inno-hero-media img{display:block;width:100%;height:auto;margin:0}
+@media (min-width:821px){
+  .inno-hero:has(.inno-hero-media){grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);grid-template-rows:auto auto;align-items:start;column-gap:clamp(2rem,4vw,3.4rem);row-gap:0}
+  .inno-hero:has(.inno-hero-media) .inno-hero-copy{grid-column:1;grid-row:1}
+    /* Held at the slot's own 3:4 ratio so the derivative is shown uncropped. */
+  .inno-hero:has(.inno-hero-media) .inno-hero-media{grid-column:2;grid-row:1/span 2;align-self:center;aspect-ratio:3/4}
+  .inno-hero:has(.inno-hero-media) .inno-hero-media img{height:100%;object-fit:cover}
+  /* Stats become a rule-topped strip under the copy. */
+  .inno-hero:has(.inno-hero-media) .inno-hero-panel{grid-column:1;grid-row:2;background:none;box-shadow:none;border-top:1px solid rgba(213,104,45,.3);border-radius:0;padding:1.15rem 0 0;margin:1.9rem 0 0;max-width:none;width:100%}
+  .inno-hero:has(.inno-hero-media) .inno-hero-panel-title{display:none}
+  .inno-hero:has(.inno-hero-media) .inno-hero-facts{display:flex;gap:1.7rem}
+  .inno-hero:has(.inno-hero-media) .inno-hero-facts li{display:block;flex:1;border-top:0;padding:0}
+  .inno-hero:has(.inno-hero-media) .inno-hero-facts strong{display:block;font-size:1.75rem;margin-bottom:.1rem;min-width:0}
+  .inno-hero:has(.inno-hero-media) .inno-hero-facts span{font-size:.92rem}
+  .inno-hero:has(.inno-hero-media) .inno-hero-facts small{font-size:.79rem;margin-top:.1rem}
+  /* The radial glow sat where the photo now is. */
+  .inno-hero:has(.inno-hero-media)::after{display:none}
+}
+@media print{.inno-hero-media{box-shadow:none}}
 
 /* Service cards ----------------------------------------------------------- */
 .inno-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin:0;padding:0;list-style:none}
@@ -71,8 +117,12 @@ a{transition:color .15s ease}
 
 /* Company ------------------------------------------------------------------ */
 .inno-company{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:2.2rem;align-items:center}
-.inno-company figure{margin:0;border-radius:var(--inno-radius);overflow:hidden;box-shadow:var(--inno-shadow)}
+/* The inherited family photo is only 280px wide, so the frame hugs the image at
+   its natural size instead of upscaling it. Once the `company-team` slot is
+   built (see PHOTOGRAPHY.md) drop the max-width and it fills the column. */
+.inno-company figure{margin:0;border-radius:var(--inno-radius);overflow:hidden;box-shadow:var(--inno-shadow);max-width:280px;justify-self:center}
 .inno-company figure img{width:100%;height:auto;display:block}
+.inno-company figure:has(picture){max-width:none}
 .inno-offices{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin:1.2rem 0 0;padding:0}
 .inno-offices li{padding:.4rem .9rem;border-radius:999px;background:var(--inno-orange-soft);color:var(--inno-orange-dark);font-weight:600;font-size:.9rem}
 
@@ -189,17 +239,22 @@ a{transition:color .15s ease}
 @media (max-width:820px){
   .inno-services,.inno-sectors{grid-template-columns:repeat(2,minmax(0,1fr))}
   .inno-company{grid-template-columns:1fr}
+  .inno-hero{grid-template-columns:1fr;gap:2rem;align-items:start}
+  .inno-hero-panel{margin-left:0;max-width:none}
+  .inno-hero::before{width:380px;height:380px;top:-30%;right:-30%}
   .rf-grid,.rf-contact,.inno-contact-grid{grid-template-columns:1fr}
   .inno-form{grid-template-columns:1fr;padding:1.2rem}
 }
 @media (max-width:560px){
   .inno-services,.inno-sectors{grid-template-columns:1fr}
   .inno-partners{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .inno-hero{border-radius:10px}
+  .inno-hero h1{font-size:1.85rem}
+  .inno-hero-panel{padding:1.2rem 1.2rem 1rem}
+  .inno-hero-facts strong{font-size:1.9rem}
   .inno-cta{padding:1.6rem 1.2rem}
 }
 @media print{
-  .inno-hero,.inno-cta,.rf-contact{background:#fff!important;color:#000!important;box-shadow:none}
+  .inno-hero,.inno-cta,.rf-contact{background:#fff!important;color:#000!important;box-shadow:none;clip-path:none}
 }
 
 /* Full-width main column on pages without a sidebar (theme sets #primary to 80%) */

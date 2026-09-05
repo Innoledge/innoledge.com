@@ -22,8 +22,11 @@ the GitHub Pages workflow (`.github/workflows/github-pages.yml`, branch `work`) 
    `SMTP_HOST`, `SMTP_PORT` (587), `SMTP_USER`, `SMTP_PASS` (an Innoledge mailbox allowed to send), `MAIL_FROM`
    (e.g. website@innoledge.com) and optionally `MAIL_TO` (default info@innoledge.com). `RESEND_API_KEY` can be used
    instead of SMTP. A honeypot field replaces reCAPTCHA. The forms only work on Vercel (GitHub Pages has no functions).
-5. Submit `https://innoledge.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
-6. Traditional Chinese copy (`zh/`) should be proof-read by a native reviewer before publication.
+5. **Photography** — every inherited image is 250–768 px and too small for the new layout. `PHOTOGRAPHY.md`
+   lists the photo slots the design expects and `tools/photography/build-photos.py` builds the WebP/JPEG
+   derivatives for them. The homepage hero uses a typographic treatment until a `hero-asia` photo exists.
+6. Submit `https://innoledge.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
+7. Traditional Chinese copy (`zh/`) should be proof-read by a native reviewer before publication.
 
 ## SEO / GEO
 * Every page has an absolute canonical URL, `hreflang` alternates (en / fr / zh-Hant-HK / x-default), a unique
