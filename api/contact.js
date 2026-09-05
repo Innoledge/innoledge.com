@@ -78,23 +78,39 @@ async function send({ to, from, replyTo, subject, text, html }) {
   throw new Error('No mail transport configured (set SMTP_HOST/SMTP_USER/SMTP_PASS or RESEND_API_KEY)');
 }
 
+// Reply helpers written against the core Node response API only. Vercel's Node
+// runtime also offers res.status()/.send()/.json(), but relying on those makes the
+// handler unusable anywhere else (and untestable with a plain http server).
+function reply(res, status, body, type) {
+  res.statusCode = status;
+  res.setHeader('Content-Type', type);
+  res.end(body);
+}
+function replyText(res, status, msg) { reply(res, status, msg, 'text/plain; charset=utf-8'); }
+function replyJson(res, status, obj) { reply(res, status, JSON.stringify(obj), 'application/json; charset=utf-8'); }
+function replyRedirect(res, location) {
+  res.statusCode = 303;
+  res.setHeader('Location', location);
+  res.end();
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
-    return res.status(405).send('Method Not Allowed');
+    return replyText(res, 405, 'Method Not Allowed');
   }
-  if (!originAllowed(req)) return res.status(403).send('Forbidden');
+  if (!originAllowed(req)) return replyText(res, 403, 'Forbidden');
 
   let body;
-  try { body = await parseBody(req); } catch (e) { return res.status(400).send('Bad Request'); }
+  try { body = await parseBody(req); } catch (e) { return replyText(res, 400, 'Bad Request'); }
 
   const wantsJson = (req.headers.accept || '').includes('application/json');
-  const fail = (status, msg) => (wantsJson ? res.status(status).json({ ok: false, error: msg }) : res.status(status).send(msg));
+  const fail = (status, msg) => (wantsJson ? replyJson(res, status, { ok: false, error: msg }) : replyText(res, status, msg));
   const next = safeNext(body.next, '/contact-us/thank-you/');
 
   // Honeypot: real users never fill this hidden field. Pretend success.
-  if (clean(body._honey, 500)) { res.statusCode = 303; res.setHeader('Location', next); return res.end(); }
+  if (clean(body._honey, 500)) return replyRedirect(res, next);
 
   const name = clean(body.name, MAX_LEN.name);
   const email = clean(body.email, MAX_LEN.email);
@@ -126,8 +142,6 @@ module.exports = async function handler(req, res) {
     return fail(502, 'Sorry, your message could not be sent. Please e-mail info@innoledge.com or call +852 2803 7784.');
   }
 
-  if (wantsJson) return res.status(200).json({ ok: true });
-  res.statusCode = 303;
-  res.setHeader('Location', next);
-  return res.end();
+  if (wantsJson) return replyJson(res, 200, { ok: true });
+  return replyRedirect(res, next);
 };
